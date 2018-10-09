@@ -146,16 +146,16 @@ def usage_repository():
     print ('Usage: ' + sys.argv[0] + ' [options] repository command ...')
     print ()
     print ('Commands :')
-    print ('\tcreate repo\t\t\t-- Create a repository named "repo"')
-    print ('\tinfo repo\t\t\t-- Get the repository metadata')
-    print ('\tgetacl repo\t\t\t-- Get the acls set for the repository')
-    print ('\tlist\t\t\t\t-- List the repositories created')
-    print ('\tsetacl repo user [acl]\t\t-- Set (or remove) an acl for "user" on "repo"')
+    print ('\tcreate repo (c)\t\t\t-- Create a repository named "repo"')
+    print ('\tinfo repo (i)\t\t\t-- Get the repository metadata')
+    print ('\tgetacl repo (gl)\t\t-- Get the acls set for the repository')
+    print ('\tlist (l)\t\t\t-- List the repositories created')
+    print ('\tsetacl repo user [acl] (sl)\t-- Set (or remove) an acl for "user" on "repo"')
     print ('\t\t\t\t\tACL format:')
     print ('\t\t\t\t\tr for read')
     print ('\t\t\t\t\tw for write')
     print ('\t\t\t\t\ta for admin')
-    print ('\tclone repo\t\t\t-- Clone repository in <repo_name> directory')
+    print ('\tclone repo (git)\t\t-- Clone repository in <repo_name> directory')
     print ('\tclone repo dest\t\t\t-- Clone repository in any directory')
     sys.exit(1)
 
@@ -197,7 +197,7 @@ def repository(args, baseurl, user, token, verbose, user_agent):
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_getacl(args[1])
     # git clone function
-    elif (args[0] == 'clone') or (args[0] == 'x'):
+    elif (args[0] == 'clone') or (args[0] == 'git'):
         if len(args) == 2 or len(args) == 3:
             handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
             if len(args) == 2:
@@ -256,7 +256,7 @@ def usage():
     print ('\t-t | --token\t\t\t-- Specify password in the cmdline')
     print ()
     print ('Commands :')
-    print ('\trepository\t\t\t-- Repository management')
+    print ('\trepository (r)\t\t\t-- Repository management')
     print ('\tsshkey\t\t\t\t-- SSH-KEYS management')
     print ('\twhoami\t\t\t\t-- Print who you are')
     sys.exit(1)
