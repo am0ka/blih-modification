@@ -162,27 +162,27 @@ def usage_repository():
 def repository(args, baseurl, user, token, verbose, user_agent):
     if len(args) == 0:
         usage_repository()
-    if args[0] == 'create':
+    if (args[0] == 'create') or (args[0] == 'c'):
         if len(args) != 2:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_create(args[1])
-    elif args[0] == 'list':
+    elif (args[0] == 'list') or (args[0] == 'l'):
         if len(args) != 1:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_list()
-    elif args[0] == 'info':
+    elif (args[0] == 'info') or (args[0] == 'i'):
         if len(args) != 2:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_info(args[1])
-    elif args[0] == 'delete':
+    elif (args[0] == 'delete') or (args[0] == 'd'):
         if len(args) != 2:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_delete(args[1])
-    elif args[0] == 'setacl':
+    elif (args[0] == 'setacl') or (args[0] == 'sl'):
         if len(args) != 4 and len(args) != 3:
             usage_repository()
         if len(args) == 3:
@@ -191,13 +191,13 @@ def repository(args, baseurl, user, token, verbose, user_agent):
             acl = args[3]
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_setacl(args[1], args[2], acl)
-    elif args[0] == 'getacl':
+    elif (args[0] == 'getacl') or (args[0] == 'gl'):
         if len(args) != 2:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_getacl(args[1])
     # git clone function
-    elif args[0] == 'clone':
+    elif (args[0] == 'clone') or (args[0] == 'x'):
         if len(args) == 2 or len(args) == 3:
             handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
             if len(args) == 2:
@@ -296,7 +296,7 @@ if __name__ == "__main__":
     if len(args) == 0:
         usage()
 
-    if args[0] == 'repository':
+    if (args[0] == 'repository') or (args[0] == 'r'):
         repository(args[1:], baseurl, user, token, verbose, user_agent)
     elif args[0] == 'sshkey':
         sshkey(args[1:], baseurl, user, token, verbose, user_agent)
