@@ -24,6 +24,16 @@ What is new?
 
     Example: `$ blih -u <user_name> -t "password" ...` your password **must** be in single (`'`) **or** double quotes (`"`). 
 
+3) Added shortcuts for most used commands.
+
+    1) `blih repository ...` = `blih r`
+    2) `blih r create ...` = `blih r c`
+    2) `blih r info ...` = `blih r i`
+    2) `blih r getacl ...` = `blih r gl`
+    2) `blih r list ...` = `blih r l`
+    2) `blih r setacl ...` = `blih r sl`
+    2) `blih r clone ...` = `blih r git`
+
 Reverting changes
 -----------------
 
