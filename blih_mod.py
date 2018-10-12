@@ -148,9 +148,9 @@ def usage_repository():
     print ('Commands :')
     print ('\tcreate repo (c)\t\t\t-- Create a repository named "repo"')
     print ('\tinfo repo (i)\t\t\t-- Get the repository metadata')
-    print ('\tgetacl repo (gl)\t\t-- Get the acls set for the repository')
+    print ('\tgetacl repo (ga)\t\t-- Get the acls set for the repository')
     print ('\tlist (l)\t\t\t-- List the repositories created')
-    print ('\tsetacl repo user [acl] (sl)\t-- Set (or remove) an acl for "user" on "repo"')
+    print ('\tsetacl repo user [acl] (sa)\t-- Set (or remove) an acl for "user" on "repo"')
     print ('\t\t\t\t\tACL format:')
     print ('\t\t\t\t\tr for read')
     print ('\t\t\t\t\tw for write')
@@ -182,7 +182,7 @@ def repository(args, baseurl, user, token, verbose, user_agent):
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_delete(args[1])
-    elif (args[0] == 'setacl') or (args[0] == 'sl'):
+    elif (args[0] == 'setacl') or (args[0] == 'sa'):
         if len(args) != 4 and len(args) != 3:
             usage_repository()
         if len(args) == 3:
@@ -191,7 +191,7 @@ def repository(args, baseurl, user, token, verbose, user_agent):
             acl = args[3]
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_setacl(args[1], args[2], acl)
-    elif (args[0] == 'getacl') or (args[0] == 'gl'):
+    elif (args[0] == 'getacl') or (args[0] == 'ga'):
         if len(args) != 2:
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
