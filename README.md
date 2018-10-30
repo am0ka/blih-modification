@@ -29,9 +29,9 @@ What is new?
     1) `blih repository ...` = `blih r`
     2) `blih r create ...` = `blih r c`
     2) `blih r info ...` = `blih r i`
-    2) `blih r getacl ...` = `blih r gl`
+    2) `blih r getacl ...` = `blih r ga`
     2) `blih r list ...` = `blih r l`
-    2) `blih r setacl ...` = `blih r sl`
+    2) `blih r setacl ...` = `blih r sa`
     2) `blih r clone ...` = `blih r git`
 
 Reverting changes
