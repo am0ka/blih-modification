@@ -117,6 +117,11 @@ class blih:
         else:
             os.system("git clone " + git_url + " " + direction)
 
+    def repo_init(self, name):
+        self.repo_create(name)
+        self.repo_setacl(name, "ramassage-tek", "r")
+        self.repo_clone(name)
+
     def sshkey_upload(self, keyfile):
         try:
             f = open(keyfile, 'r')
@@ -157,6 +162,7 @@ def usage_repository():
     print ('\t\t\t\t\ta for admin')
     print ('\tclone repo (git)\t\t-- Clone repository in <repo_name> directory')
     print ('\tclone repo dest\t\t\t-- Clone repository in any directory')
+    print ('\tinit repo \t\t\t-- Create, Set and Clone. 3in1 function')
     sys.exit(1)
 
 def repository(args, baseurl, user, token, verbose, user_agent):
@@ -206,6 +212,11 @@ def repository(args, baseurl, user, token, verbose, user_agent):
                 handle.repo_clone(args[1], args[2])
         else:
             usage_repository()
+    elif (args[0] == 'init'):
+        if len(args) != 2:
+            usage_repository()
+        handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
+        handle.repo_init(args[1])
     else:
         usage_repository()
 
