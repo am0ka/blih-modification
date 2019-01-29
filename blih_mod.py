@@ -83,33 +83,40 @@ class blih:
         data = {'name' : name, 'type' : type}
         if description:
             data['description'] = description
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repositories', method='POST', data=data)
         print (data['message'])
 
     def repo_list(self):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repositories', method='GET')
         for i in data['repositories']:
             print (i)
 
     def repo_delete(self, name):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repository/' + name, method='DELETE')
         print (data['message'])
 
     def repo_info(self, name):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repository/' + name, method='GET')
         print (data['message'])
 
     def repo_setacl(self, name, acluser, acl):
         data = {'user' : acluser, 'acl' : acl}
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repository/' + name + '/acls', method='POST', data=data)
         print (data['message'])
 
     def repo_getacl(self, name):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repository/' + name + '/acls', method='GET')
         for i in data.keys():
             print (i + ':' + data[i])
 
     def repo_clone(self, name, direction=None):
+        # pylint: disable=unused-variable
         status, reason, headers, username = self.request('/whoami', method='GET')
         git_url = 'git@git.epitech.eu:/' + str(username['message']) + '/' + name
         if direction == None:
@@ -131,19 +138,23 @@ class blih:
         key = urllib.parse.quote(f.read().strip('\n'))
         f.close()
         data = {'sshkey' : key}
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/sshkeys', method='POST', data=data)
         print (data['message'])
 
     def sshkey_delete(self, sshkey):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/sshkey/' + sshkey, method='DELETE')
         print (data['message'])
 
     def sshkey_list(self):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/sshkeys', method='GET')
         for i in data.keys():
             print (data[i] + ' ' + i)
 
     def whoami(self):
+        # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/whoami', method='GET')
         print (data['message'])
 
