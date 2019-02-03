@@ -51,9 +51,4 @@ If something got wrong, or you want to go back to the original one just do the f
 Post Scriptum
 -------------
 
-If you have any ideas to make this tool better and more convenient, do not hesitate to send your pull requests or open "New issue" tickets!
-
-Post Post Scriptum
--------------
-
-I am trying and experimenting with different opensource programs. I have 0 knowledge Python. But it is very interesting to learn in practice. Try once. 
+If you have any ideas to make this tool better and more convenient, do not hesitate to send your pull requests or open "New issue" tickets! 
