@@ -16,6 +16,10 @@ Installation
 What is new?
 ------------
 
+1) Option for `blih list` to list certain repositories' names. **(03.02.2019)**
+
+    Example: `$ blih list -f PSU` or `$ blih list --find PSU` or `$ blih list -f 2018`.
+
 1) New 3-in-1 function, which creates, set permission `r` to `ramassage-tek` and downloads (clones) your new repository using just one line. Usage: `blih repository init <repository_name>` or `blih r init <repository_name>`. **(17.01.2019)**
 
 1) Easier way to clone repository for Epitech git is just `$ blih repository clone <repository_name>` or `$ blih repository clone <repository_name> directory` - where `directory` is where you would like to put your repository. **(9.10.2018)**

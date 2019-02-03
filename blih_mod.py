@@ -87,11 +87,12 @@ class blih:
         status, reason, headers, data = self.request('/repositories', method='POST', data=data)
         print (data['message'])
 
-    def repo_list(self):
+    def repo_list(self, search=''):
         # pylint: disable=unused-variable
         status, reason, headers, data = self.request('/repositories', method='GET')
         for i in data['repositories']:
-            print (i)
+            if str(i).find(search) != -1:
+                print(i)
 
     def repo_delete(self, name):
         # pylint: disable=unused-variable
@@ -166,6 +167,7 @@ def usage_repository():
     print ('\tinfo repo (i)\t\t\t-- Get the repository metadata')
     print ('\tgetacl repo (ga)\t\t-- Get the acls set for the repository')
     print ('\tlist (l)\t\t\t-- List the repositories created')
+    print ('\t\t -f | --find [value]\t-- Search specific repositories in the list')
     print ('\tsetacl repo user [acl] (sa)\t-- Set (or remove) an acl for "user" on "repo"')
     print ('\t\t\t\t\tACL format:')
     print ('\t\t\t\t\tr for read')
@@ -185,10 +187,13 @@ def repository(args, baseurl, user, token, verbose, user_agent):
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
         handle.repo_create(args[1])
     elif (args[0] == 'list') or (args[0] == 'l'):
-        if len(args) != 1:
+        if (len(args) != 1) and (len(args) != 3):
             usage_repository()
         handle = blih(baseurl=baseurl, user=user, token=token, verbose=verbose, user_agent=user_agent)
-        handle.repo_list()
+        if (len(args) != 1) and ((args[1] == '-f') or (args[1] == '--find')):
+            handle.repo_list(args[2])
+        else:
+            handle.repo_list()
     elif (args[0] == 'info') or (args[0] == 'i'):
         if len(args) != 2:
             usage_repository()
